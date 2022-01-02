@@ -1,11 +1,13 @@
 package hello.thymeleaf.basic;
 
 import lombok.Data;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -93,6 +95,44 @@ public class BasicController {
         model.addAttribute("userMap", map);
 
         return "basic/variable";
+    }
+
+    /**
+     * thymeleaf 는 기본 객체들을 제공
+     *
+     * ${#request}
+     * ${#response}
+     * ${#session}
+     * ${#servletContext}
+     * ${#locale}
+     *
+     * HTTP 요청 파라미터 접근: param
+     * - 예) ${param.paramData}
+     *
+     * HTTP 세션 접근: session
+     * - 예) ${session.sessionData}
+     *
+     * 스프링 빈 접근: @
+     * - 예) ${@helloBean.hello('Spring!')}
+     *
+     * @param session
+     * @return
+     */
+    @GetMapping("/basic-objects")
+    public String basicObject(HttpSession session) {
+
+        session.setAttribute("sessionData", "Hello Session");
+
+        return "basic/basic-objects";
+    }
+
+    @Component("helloBean")
+    static class HelloBean {
+
+        public String hello(String data) {
+
+            return "Hello " + data;
+        }
     }
 
     @Data
