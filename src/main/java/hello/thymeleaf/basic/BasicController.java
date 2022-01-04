@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -124,6 +125,20 @@ public class BasicController {
         session.setAttribute("sessionData", "Hello Session");
 
         return "basic/basic-objects";
+    }
+
+    /**
+     * 타임리프는 문자, 숫자, 날짜, URI 등을 편리하게 다루는 다양한 유틸리티 객체들을 제공
+     * 
+     * @param model
+     * @return
+     */
+    @GetMapping("/date")
+    public String date(Model model) {
+
+        model.addAttribute("localDateTime", LocalDateTime.now());
+
+        return "basic/date";
     }
 
     @Component("helloBean")
