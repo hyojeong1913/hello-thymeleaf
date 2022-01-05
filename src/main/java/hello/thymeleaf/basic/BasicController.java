@@ -156,6 +156,26 @@ public class BasicController {
         return "basic/link";
     }
 
+    /**
+     * 리터럴
+     *
+     * thymeleaf 에서 문자 리터럴은 항상 ' (작은 따옴표) 로 감싸야 한다.
+     * 공백 없이 문자열이 이어진다면 하나의 의미있는 토큰으로 인지해서 작은 따옴표 생략 가능
+     *
+     * 리터럴 대체 (Literal substitutions)
+     * => | 문자열 |
+     *
+     * @param model
+     * @return
+     */
+    @GetMapping("/literal")
+    public String literal(Model model) {
+
+        model.addAttribute("data", "Spring!");
+
+        return "basic/literal";
+    }
+
     @Component("helloBean")
     static class HelloBean {
 
