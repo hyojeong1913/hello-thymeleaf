@@ -191,6 +191,22 @@ public class BasicController {
         return "basic/operation";
     }
 
+    /**
+     * 속성 값 설정
+     *
+     * thymeleaf 는 주로 HTML 태그에 th:* 속성을 지정하는 방식으로 동작
+     *
+     * th:* 로 속성을 적용하면 기존 속성을 대체하고, 기존 속성이 없으면 새로 만든다.
+     *
+     * @param model
+     * @return
+     */
+    @GetMapping("/attribute")
+    public String attribute(Model model) {
+
+        return "basic/attribute";
+    }
+
     @Component("helloBean")
     static class HelloBean {
 
