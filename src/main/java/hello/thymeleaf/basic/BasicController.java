@@ -221,6 +221,25 @@ public class BasicController {
         return "basic/each";
     }
 
+    /**
+     * 조건부 평가
+     *
+     * thymeleaf 는 해당 조건이 맞지 않으면 태그 자체를 렌더링하지 않는다.
+     *
+     * switch
+     *  : * 은 만족하는 조건이 없을 때 사용하는 디폴트
+     *
+     * @param model
+     * @return
+     */
+    @GetMapping("/condition")
+    public String condition(Model model) {
+
+        addUsers(model);
+
+        return "basic/condition";
+    }
+
     private void addUsers(Model model) {
 
         List<User> list = new ArrayList<>();
