@@ -240,6 +240,29 @@ public class BasicController {
         return "basic/condition";
     }
 
+    /**
+     * 주석
+     *
+     * 표준 HTML 주석
+     * : 자바스크립트의 표준 HTML 주석은 thymeleaf 가 렌더링 하지 않고, 그대로 남겨둔다.
+     *
+     * 타임리프 파서 주석
+     * : 타임리프 파서 주석은 thymeleaf 의 진짜 주석이다. 렌더링에서 주석 부분을 제거한다.
+     *
+     * 타임리프 프로토타입 주석
+     * : HTML 파일을 그대로 열어보면 주석처리가 되지만, thymeleaf 를 렌더링 한 경우에만 보이는 기능
+     *
+     * @param model
+     * @return
+     */
+    @GetMapping("/comments")
+    public String comments(Model model) {
+
+        model.addAttribute("data", "Spring!");
+
+        return "basic/comments";
+    }
+
     private void addUsers(Model model) {
 
         List<User> list = new ArrayList<>();
