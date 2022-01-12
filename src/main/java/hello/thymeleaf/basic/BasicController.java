@@ -279,6 +279,34 @@ public class BasicController {
         return "basic/block";
     }
 
+    /**
+     * 자바스크립트 인라인
+     *
+     * thymeleaf 는 자바스크립트에서 타임리프를 편리하게 사용할 수 있는 자바스크립트 인라인 기능을 제공
+     *
+     * 인라인 사용 후 렌더링 결과를 보면 문자타입인 경우 "를 포함해주며
+     * 추가로 자바스크립트에서 문제가 될 수 있는 문자가 포함되어 있으면 이스케이프 처리도 해준다.
+     *
+     * thymeleaf 는 HTML 파일을 직접 열어도 동작하는 내추럴 템플릿 기능을 제공
+     *
+     * thymeleaf 의 자바스크립트 인라인 기능을 사용하면 객체를 JSON 으로 자동으로 변환
+     *
+     * 인라인 사용 전은 객체의 toString() 이 호출된 값
+     * 인라인 사용 후는 객체를 JSON 으로 변환해준다.
+     *
+     * @param model
+     * @return
+     */
+    @GetMapping("/javascript")
+    public String javascript(Model model) {
+
+        model.addAttribute("user", new User("userA", 10));
+
+        addUsers(model);
+
+        return "basic/javascript";
+    }
+
     private void addUsers(Model model) {
 
         List<User> list = new ArrayList<>();
