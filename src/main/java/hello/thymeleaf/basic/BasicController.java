@@ -263,6 +263,22 @@ public class BasicController {
         return "basic/comments";
     }
 
+    /**
+     * 블록
+     *
+     * <th:block> 은 HTML 태그가 아닌 thymeleaf 의 유일한 자체 태그
+     *
+     * @param model
+     * @return
+     */
+    @GetMapping("/block")
+    public String block(Model model) {
+
+        addUsers(model);
+
+        return "basic/block";
+    }
+
     private void addUsers(Model model) {
 
         List<User> list = new ArrayList<>();
