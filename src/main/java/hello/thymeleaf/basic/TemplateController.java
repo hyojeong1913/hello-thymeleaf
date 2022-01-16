@@ -31,4 +31,15 @@ public class TemplateController {
 
         return "template/layout/layoutMain";
     }
+
+    /**
+     * 템플릿 레이아웃 확장
+     *
+     * @return
+     */
+    @GetMapping("layoutExtend")
+    public String layoutExtend() {
+
+        return "template/layoutExtend/layoutExtendMain";
+    }
 }
